@@ -32,7 +32,25 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.NavItem,
+.NavLink,
+.NavSlash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.NavItem {
+  cursor: pointer;
+}
+
+.logo {
+  width: 25px;
+  height: auto;
 }
