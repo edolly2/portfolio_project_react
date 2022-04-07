@@ -4,7 +4,7 @@ import React from "react";
 
 const HeaderComponent = () => {
   return (
-    <header className="p-4">
+    <header className="p-4 sticky-top">
       <NavLink className="site-brand" to="/">
         <img className="site-brand-logo" src={Logo} alt="Logo" />
         <p className="site-brand-title">BeeBilingual</p>
