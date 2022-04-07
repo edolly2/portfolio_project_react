@@ -6,32 +6,33 @@ import {
   DropdownToggle,
   Nav,
   NavItem,
-  NavLink,
   Navbar,
-  NavbarBrand,
   NavbarToggler,
+  NavLink as NavigationLink,
   UncontrolledDropdown,
 } from "reactstrap";
 
-import Logo from "./bee.png";
+import { NavLink } from "react-router-dom";
 import React from "react";
 import { useState } from "react";
 
-const NavbarComponent = () => {
+// let dropdownIsActive = "";
+const NavbarComponent = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  // const [dropdownActive, setDropdownActive] = useState(false);
 
   function LoggedOn() {
     if (!isLoggedIn) {
       return (
         <Nav className="Nav">
           <NavItem className="NavItem">
-            <NavLink className="NavLink">Register</NavLink>
+            <NavigationLink className="NavigationLink">Register</NavigationLink>
           </NavItem>
           <NavItem className="NavItem">
             <div className="NavSlash">{" / "}</div>
-            <NavLink className="NavLink">
+            <NavigationLink className="NavigationLink">
               Login <BiLogIn />
-            </NavLink>
+            </NavigationLink>
           </NavItem>
         </Nav>
       );
@@ -39,13 +40,13 @@ const NavbarComponent = () => {
       return (
         <Nav className="Nav">
           <NavItem className="NavItem">
-            <NavLink className="NavLink">Account</NavLink>
+            <NavigationLink className="NavigationLink">Account</NavigationLink>
           </NavItem>
           <div className="NavSlash">{" / "}</div>
           <NavItem className="NavItem">
-            <NavLink className="NavLink">
+            <NavigationLink className="NavigationLink">
               Logout <BiLogOut />
-            </NavLink>
+            </NavigationLink>
           </NavItem>
         </Nav>
       );
@@ -55,35 +56,58 @@ const NavbarComponent = () => {
   return (
     <div>
       <Navbar color="light" expand="md" sticky="top" light>
-        <NavbarBrand href="/">
-          <img className="logo" src={Logo} alt="Logo" />
-          {/* BeeBilingual */}
-        </NavbarBrand>
-        <NavbarToggler onClick={function noRefCheck() {}} />
+        <NavbarToggler className="ms-auto" onClick={function noRefCheck() {}} />
         <Collapse navbar>
           <Nav className="me-auto Nav" navbar>
-            <NavItem className="NavItem" active>
-              <NavLink className="NavLink" href="#">
-                Home
-              </NavLink>
-            </NavItem>
+            {/* ---------------- */}
+            {/* ---------------- */}
             <NavItem className="NavItem">
-              <NavLink className="NavLink" href="#">
-                About
-              </NavLink>
+              <NavigationLink className="NavigationLink">
+                <NavLink className="NavLink" to="/">
+                  Home
+                </NavLink>
+              </NavigationLink>
             </NavItem>
+            {/* ---------------- */}
             <NavItem className="NavItem">
-              <NavLink className="NavLink" href="#">
-                Pricing
-              </NavLink>
+              <NavigationLink className="NavigationLink">
+                <NavLink className="NavLink" to="/about">
+                  About
+                </NavLink>
+              </NavigationLink>
             </NavItem>
+            {/* ---------------- */}
             <NavItem className="NavItem">
-              <NavLink className="NavLink" href="#">
-                Contact
-              </NavLink>
+              <NavigationLink className="NavigationLink">
+                <NavLink className="NavLink" to="/pricing">
+                  Pricing
+                </NavLink>
+              </NavigationLink>
             </NavItem>
+            {/* ---------------- */}
+            <NavItem className="NavItem">
+              <NavigationLink className="NavigationLink">
+                <NavLink className="NavLink" to="/contact">
+                  Contact
+                </NavLink>
+              </NavigationLink>
+            </NavItem>
+            {/* ---------------- */}
+            {/* ---------------- */}
             <UncontrolledDropdown inNavbar nav>
-              <DropdownToggle caret nav>
+              <DropdownToggle
+                caret
+                nav
+                // onClick={() => {
+                //   setDropdownActive(!dropdownActive);
+                //   if (dropdownActive) {
+                //     dropdownIsActive = "active";
+                //   } else {
+                //     dropdownIsActive = "";
+                //   }
+                // }}
+                // className={dropdownIsActive}
+              >
                 Courses
               </DropdownToggle>
               <DropdownMenu right>
